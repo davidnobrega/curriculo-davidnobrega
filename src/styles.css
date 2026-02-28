@@ -132,6 +132,10 @@ h1::after {
   margin: 30px 0;
 }
 
+header .contact-info {
+  display: none;
+}
+
 .contact-item {
   display: flex;
   align-items: center;
