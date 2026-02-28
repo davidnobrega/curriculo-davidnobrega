@@ -227,17 +227,23 @@ section {
   background: #eef6f1;
 }
 
-/* Divisores sutis entre seções no modo light */
-.experiencia,
-.habilidades,
-.formacao {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+/* Divisores neon centralizados entre seções */
+.experiencia::before,
+.habilidades::before,
+.formacao::before {
+  content: "";
+  display: block;
+  width: 180px;
+  height: 1px;
+  margin: 0 auto 60px;
+  background: linear-gradient(to right, transparent, rgba(0, 200, 120, 0.55), transparent);
+  box-shadow: 0 0 6px rgba(0, 200, 120, 0.35), 0 0 14px rgba(0, 200, 120, 0.15);
 }
 
-body.dark .experiencia,
-body.dark .habilidades,
-body.dark .formacao {
-  border-top: none;
+body.dark .experiencia::before,
+body.dark .habilidades::before,
+body.dark .formacao::before {
+  display: none;
 }
 
 h2 {
