@@ -370,13 +370,14 @@ h2::after {
 
 /* Habilidades */
 .habilidades .container {
-  padding: 0 8px;
+  max-width: 100%;
+  padding: 0 40px;
 }
 
 .habilidades-categorias {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 
 .categoria {
