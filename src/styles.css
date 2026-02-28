@@ -196,10 +196,10 @@ header .contact-info {
 }
 
 .btn-primary:hover {
-  background: #000;
-  color: white;
-  border-color: #000;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  background: var(--secondary);
+  color: #071a0f;
+  border-color: var(--secondary);
+  box-shadow: 0 14px 32px rgba(0, 200, 120, 0.4);
   transform: translateY(-8px) scale(1.06);
   animation: none;
 }
@@ -213,10 +213,10 @@ header .contact-info {
 }
 
 .btn-secondary:hover {
-  background: #000;
-  color: white;
-  border-color: #000;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  background: var(--secondary);
+  color: #071a0f;
+  border-color: var(--secondary);
+  box-shadow: 0 14px 32px rgba(0, 200, 120, 0.4);
   transform: translateY(-8px) scale(1.06);
   animation: none;
 }
@@ -564,10 +564,10 @@ footer {
 }
 
 .btn-pdf:hover {
-  background: #000;
-  color: white;
-  border-color: #000;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  background: var(--secondary);
+  color: #071a0f;
+  border-color: var(--secondary);
+  box-shadow: 0 14px 32px rgba(0, 200, 120, 0.4);
   transform: translateY(-8px) scale(1.06);
   animation: none;
 }
@@ -692,9 +692,9 @@ body.dark .btn-pdf {
 body.dark .btn-primary:hover,
 body.dark .btn-secondary:hover,
 body.dark .btn-pdf:hover {
-  background: #000;
-  color: white;
-  border-color: #000;
+  background: var(--secondary);
+  color: #071a0f;
+  border-color: var(--secondary);
 }
 
 /* Contato no dark mode */
