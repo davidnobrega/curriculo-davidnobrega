@@ -369,10 +369,14 @@ h2::after {
 }
 
 /* Habilidades */
+.habilidades .container {
+  padding: 0 8px;
+}
+
 .habilidades-categorias {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 16px;
 }
 
 .categoria {
