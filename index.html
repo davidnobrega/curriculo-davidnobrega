@@ -45,6 +45,9 @@
                 <a href="#experiencia" class="btn btn-secondary">
                     <i class="fas fa-briefcase"></i> Ver Experiência
                 </a>
+                <button onclick="gerarPDF()" class="btn btn-pdf">
+                    <i class="fas fa-file-pdf"></i> Meu Currículo em PDF
+                </button>
             </div>
         </div>
     </header>
@@ -269,6 +272,36 @@
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
         });
+
+        // Gerar PDF em modo light
+        function gerarPDF() {
+            const isDark = document.body.classList.contains('dark');
+            if (isDark) document.body.classList.remove('dark');
+
+            // Renomeia "Sobre Mim" para "Resumo Profissional" no PDF
+            const resumoH2 = document.querySelector('.resumo h2');
+            const originalTitle = resumoH2 ? resumoH2.textContent : '';
+            if (resumoH2) resumoH2.textContent = 'Resumo Profissional';
+
+            // Força visibilidade de todas as seções (IntersectionObserver aplica opacity:0 inline)
+            document.querySelectorAll('section').forEach(s => {
+                s.style.opacity = '1';
+                s.style.transform = 'translateY(0)';
+            });
+
+            // Garante que os parágrafos do resumo estejam visíveis
+            document.querySelectorAll('.resumo p').forEach(p => {
+                p.classList.add('slide-in');
+                p.style.opacity = '1';
+                p.style.transform = 'translateX(0)';
+            });
+
+            window.print();
+
+            // Restaura o estado após impressão
+            if (resumoH2) resumoH2.textContent = originalTitle;
+            if (isDark) document.body.classList.add('dark');
+        }
 
         // Dark mode toggle
         const darkToggle = document.getElementById('dark-toggle');

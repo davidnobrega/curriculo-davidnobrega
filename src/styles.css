@@ -185,15 +185,16 @@ h1::after {
 }
 
 .btn-primary {
-  background: var(--secondary);
-  color: #071a0f;
-  box-shadow: 0 0 20px rgba(0, 200, 120, 0.5);
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
   animation: float-btn 3s ease-in-out infinite;
 }
 
 .btn-primary:hover {
   background: #000;
   color: white;
+  border-color: #000;
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
   transform: translateY(-8px) scale(1.06);
   animation: none;
@@ -202,7 +203,7 @@ h1::after {
 .btn-secondary {
   background: transparent;
   color: white;
-  border: 2px solid rgba(0, 229, 255, 0.65);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   animation: float-btn 3s ease-in-out infinite;
   animation-delay: 0.4s;
 }
@@ -400,11 +401,18 @@ h2::after {
 }
 
 .habilidade-tag:hover {
-  background: #000;
-  color: white;
-  border-color: #000;
+  background: rgba(0, 200, 120, 0.12);
+  color: #00c878;
+  border-color: #00c878;
   transform: translateY(-4px) scale(1.06);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 0 6px rgba(0, 200, 120, 0.7),
+    0 0 18px rgba(0, 200, 120, 0.45),
+    0 0 40px rgba(0, 200, 120, 0.2),
+    0 0 70px rgba(0, 229, 255, 0.08);
+  text-shadow:
+    0 0 6px rgba(0, 200, 120, 0.8),
+    0 0 16px rgba(0, 200, 120, 0.5);
 }
 
 /* Formação */
@@ -521,6 +529,26 @@ footer {
   50%       { transform: translateY(-6px); }
 }
 
+/* Botão PDF */
+.btn-pdf {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-family: inherit;
+  animation: float-btn 3s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.btn-pdf:hover {
+  background: #000;
+  color: white;
+  border-color: #000;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  transform: translateY(-8px) scale(1.06);
+  animation: none;
+}
+
 /* Toggle Dark Mode */
 #dark-toggle {
   position: fixed;
@@ -591,6 +619,20 @@ body.dark .habilidade-tag {
   color: #ccc;
 }
 
+body.dark .habilidade-tag:hover {
+  background: rgba(0, 200, 120, 0.1);
+  color: #00c878;
+  border-color: #00c878;
+  box-shadow:
+    0 0 8px rgba(0, 200, 120, 0.8),
+    0 0 22px rgba(0, 200, 120, 0.5),
+    0 0 50px rgba(0, 200, 120, 0.25),
+    0 0 90px rgba(0, 229, 255, 0.1);
+  text-shadow:
+    0 0 8px rgba(0, 200, 120, 0.9),
+    0 0 20px rgba(0, 200, 120, 0.6);
+}
+
 body.dark .resumo p {
   background: transparent;
 }
@@ -615,21 +657,18 @@ body.dark .periodo {
   color: #888;
 }
 
-/* Botões no dark mode — verde + branco */
-body.dark .btn-primary {
-  background: var(--secondary);
+/* Botões no dark mode — mesma aparência transparente */
+body.dark .btn-primary,
+body.dark .btn-secondary,
+body.dark .btn-pdf {
+  background: transparent;
   color: white;
-  box-shadow: 0 0 20px rgba(0, 200, 120, 0.5);
-}
-
-body.dark .btn-secondary {
-  background: var(--secondary);
-  color: white;
-  border-color: var(--secondary);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 body.dark .btn-primary:hover,
-body.dark .btn-secondary:hover {
+body.dark .btn-secondary:hover,
+body.dark .btn-pdf:hover {
   background: #000;
   color: white;
   border-color: #000;
@@ -654,6 +693,248 @@ body.dark #dark-toggle {
 
 body.dark #dark-toggle:hover {
   box-shadow: 0 6px 24px rgba(240, 192, 64, 0.5);
+}
+
+/* ==================== IMPRESSÃO / PDF ==================== */
+@media print {
+  @page {
+    margin: 14mm 18mm;
+    size: A4;
+  }
+
+  /* === OCULTAR ELEMENTOS INTERATIVOS === */
+  #dark-toggle,
+  .cta-buttons,
+  .btn-pdf,
+  .profile-img,
+  .social-links,
+  .tagline,
+  #contato,
+  footer { display: none !important; }
+
+  /* === REMOVER ANIMAÇÕES === */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* === BASE === */
+  html, body {
+    background: #ffffff !important;
+    color: #2c3e50 !important;
+    font-size: 10.5pt !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  section {
+    background: #ffffff !important;
+    padding: 14pt 0 !important;
+  }
+
+  /* === HEADER LIMPO === */
+  header {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #2c3e50 !important;
+    padding: 0 0 14pt !important;
+    text-align: center !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    overflow: visible !important;
+  }
+
+  header::before,
+  header::after { display: none !important; }
+
+  h1 {
+    color: #2c3e50 !important;
+    font-size: 22pt !important;
+    margin-bottom: 8pt !important;
+    text-shadow: none !important;
+  }
+
+  header .contact-info {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 14pt !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  header .contact-item {
+    background: none !important;
+    border: none !important;
+    color: #2c3e50 !important;
+    font-size: 9pt !important;
+    padding: 0 !important;
+    transform: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4pt !important;
+  }
+
+  header .contact-item i { color: #3498db !important; }
+
+  /* === TÍTULOS DE SEÇÃO === */
+  h2 {
+    color: #2c3e50 !important;
+    font-size: 15pt !important;
+    font-weight: 700 !important;
+    padding-bottom: 5pt !important;
+    border-bottom: 2px solid #3498db !important;
+    margin-bottom: 12pt !important;
+    text-shadow: none !important;
+    break-after: avoid;
+  }
+
+  /* === SOBRE MIM / RESUMO === */
+  .resumo p {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    color: #2c3e50 !important;
+    text-align: justify !important;
+    margin-bottom: 7pt !important;
+    font-size: 10pt !important;
+  }
+
+  .resumo p strong { color: #2c3e50 !important; }
+
+  /* === TIMELINE / EXPERIÊNCIA === */
+  .timeline { position: static !important; }
+
+  .timeline::before { display: none !important; }
+
+  .timeline-icon { display: none !important; }
+
+  .timeline-item {
+    padding-left: 0 !important;
+    margin-bottom: 14pt !important;
+    position: static !important;
+    break-inside: avoid;
+  }
+
+  .timeline-content {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .cargo {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    font-style: italic !important;
+    color: #2c3e50 !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .empresa {
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    color: #3498db !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .periodo-local {
+    font-size: 9pt !important;
+    color: #666 !important;
+    margin-bottom: 5pt !important;
+  }
+
+  .timeline-content ul {
+    padding-left: 14pt !important;
+    margin: 0 !important;
+  }
+
+  .timeline-content ul li {
+    font-size: 10pt !important;
+    color: #2c3e50 !important;
+    margin-bottom: 2pt !important;
+  }
+
+  /* === HABILIDADES === */
+  .habilidades-categorias {
+    display: block !important;
+  }
+
+  .categoria {
+    background: none !important;
+    border: none !important;
+    padding: 0 0 10pt !important;
+    border-radius: 0 !important;
+    break-inside: avoid;
+  }
+
+  .categoria-titulo {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    color: #2c3e50 !important;
+    text-align: left !important;
+    border-bottom: none !important;
+    padding-bottom: 4pt !important;
+    margin-bottom: 5pt !important;
+    justify-content: flex-start !important;
+  }
+
+  .categoria-titulo i { display: none !important; }
+
+  .habilidades-lista {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 5pt !important;
+  }
+
+  .habilidade-tag {
+    background: #ffffff !important;
+    color: #2c3e50 !important;
+    border: 1px solid #bdc3c7 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    padding: 2pt 8pt !important;
+    font-size: 9pt !important;
+    border-radius: 12pt !important;
+  }
+
+  /* === FORMAÇÃO === */
+  .formacao-item {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    break-inside: avoid;
+  }
+
+  .curso {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    color: #2c3e50 !important;
+  }
+
+  .instituicao {
+    font-size: 10pt !important;
+    font-style: italic !important;
+    color: #3498db !important;
+  }
+
+  .periodo {
+    font-size: 9pt !important;
+    color: #666 !important;
+  }
+
+  /* === QUEBRAS DE PÁGINA === */
+  .experiencia, .habilidades, .formacao { break-before: auto; }
+  .timeline-item, .categoria, .formacao-item { break-inside: avoid; }
 }
 
 /* Responsividade */
