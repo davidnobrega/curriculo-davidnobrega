@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="./dist/styles.css">
 </head>
 <body>
+    <!-- Dark Mode Toggle -->
+    <button id="dark-toggle" aria-label="Alternar modo escuro">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -27,12 +32,12 @@
                     <i class="fas fa-envelope"></i>
                     <span>david_nobrega@outlook.com</span>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
+                <a href="https://wa.me/5561995056177" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
                     <span>(61) 99505-6177</span>
-                </div>
+                </a>
             </div>
-            
+
             <div class="cta-buttons">
                 <a href="#contato" class="btn btn-primary">
                     <i class="fas fa-paper-plane"></i> Entrar em Contato
@@ -48,8 +53,9 @@
     <section id="resumo" class="resumo">
         <div class="container">
             <h2>Sobre Mim</h2>
-            <p>Desenvolvedor Full Stack Junior com mais de 3 anos de experiência em desenvolvimento de software. Atuo no <strong>Desenvolvimento Frontend</strong> com Vue.js 3, Nuxt e Tailwind CSS, no <strong>Desenvolvimento Backend</strong> com PHP (Laravel) e MySQL, e em <strong>Quality Assurance</strong> com testes de usabilidade e automações com Cypress, garantindo qualidade e confiabilidade em aplicações web.</p>
-            <p>Experiência prática com metodologias ágeis (Scrum, Kanban) e Git Flow para gestão de projetos. Comunicativo, proativo e colaborativo, valorizo o crescimento em equipe e estou sempre em busca de aprendizado contínuo e novos desafios.</p>
+            <p>Profissional com mais de 3 anos de experiência em desenvolvimento de software, com foco em <strong>Quality Assurance</strong>. Minha formação como <strong>Desenvolvedor Full Stack</strong> — atuando com Vue.js 3, Nuxt e Tailwind CSS no frontend, e PHP (Laravel) com MySQL no backend — me confere uma visão completa do ciclo de desenvolvimento, tornando meu trabalho em QA mais estratégico e assertivo.</p>
+            <p>Especializado em <strong>automação de testes com Cypress</strong> e testes de usabilidade, atuo na identificação e prevenção de falhas em todas as etapas do desenvolvimento, garantindo entregas com qualidade e confiabilidade. Entender profundamente o código que testo me permite colaborar diretamente com as equipes de desenvolvimento, contribuindo para arquiteturas mais testáveis e processos mais eficientes.</p>
+            <p>No dia a dia, tenho vivência sólida com <strong>metodologias ágeis</strong> (Scrum e Kanban), gestão de tarefas em ferramentas como <strong>Jira, ClickUp e Linear</strong>, e controle de versão com <strong>Git e Git Flow</strong>. Também atuo com <strong>Docker</strong> em ambientes de desenvolvimento, consulta e modelagem em <strong>banco de dados</strong> (MySQL), validação de APIs com <strong>Postman</strong> e leitura de protótipos no <strong>Figma</strong> — o que me permite transitar com fluidez entre as diferentes etapas do ciclo de entrega de software.</p>
         </div>
     </section>
 
@@ -192,10 +198,10 @@
                         <i class="fas fa-envelope"></i>
                         <span>david_nobrega@outlook.com</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                    <a href="https://wa.me/5561995056177" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
                         <span>(61) 99505-6177</span>
-                    </div>
+                    </a>
                 </div>
                 
                 <div class="social-links">
@@ -255,13 +261,51 @@
             });
         }, observerOptions);
 
-        // Aplicar efeito às seções
-        document.querySelectorAll('section').forEach(section => {
+        // Aplicar efeito às seções (exceto resumo, que tem animação própria nos parágrafos)
+        document.querySelectorAll('section:not(.resumo)').forEach(section => {
             section.style.opacity = '0';
             section.style.transform = 'translateY(20px)';
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
         });
+
+        // Dark mode toggle
+        const darkToggle = document.getElementById('dark-toggle');
+        const toggleIcon = darkToggle.querySelector('i');
+
+        function applyDark(isDark) {
+            document.body.classList.toggle('dark', isDark);
+            toggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        applyDark(localStorage.getItem('darkMode') === 'true');
+
+        darkToggle.addEventListener('click', () => {
+            const isDark = !document.body.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            applyDark(isDark);
+        });
+
+        // Animação do Sobre Mim: re-dispara toda vez que entrar na viewport
+        const resumoSection = document.querySelector('.resumo');
+        if (resumoSection) {
+            const resumoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const paragraphs = entry.target.querySelectorAll('p');
+                    if (entry.isIntersecting) {
+                        paragraphs.forEach((p, i) => {
+                            p.classList.remove('slide-in');
+                            void p.offsetWidth; // força reflow para reiniciar animação
+                            p.style.animationDelay = `${i * 0.3}s`;
+                            p.classList.add('slide-in');
+                        });
+                    } else {
+                        paragraphs.forEach(p => p.classList.remove('slide-in'));
+                    }
+                });
+            }, { threshold: 0.2 });
+            resumoObserver.observe(resumoSection);
+        }
     </script>
 </body>
 </html>
