@@ -233,7 +233,7 @@ section {
 .formacao::before {
   content: "";
   display: block;
-  width: 420px;
+  width: 600px;
   height: 1px;
   margin: 0 auto 60px;
   background: linear-gradient(to right, transparent, rgba(0, 200, 120, 0.55), transparent);
