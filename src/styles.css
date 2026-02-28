@@ -227,6 +227,19 @@ section {
   background: #eef6f1;
 }
 
+/* Divisores sutis entre seções no modo light */
+.experiencia,
+.habilidades,
+.formacao {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.dark .experiencia,
+body.dark .habilidades,
+body.dark .formacao {
+  border-top: none;
+}
+
 h2 {
   text-align: center;
   font-size: 2.2rem;
