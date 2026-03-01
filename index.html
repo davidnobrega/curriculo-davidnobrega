@@ -346,29 +346,40 @@
             const originalTitle = resumoH2 ? resumoH2.textContent : '';
             if (resumoH2) resumoH2.textContent = 'Resumo Profissional';
 
-            // Força visibilidade de todas as seções (IntersectionObserver aplica opacity:0 inline)
+            // Substitui o resumo por versão condensada para o PDF
+            const resumoContainer = document.querySelector('.resumo .container');
+            const originalResumoHTML = resumoContainer ? resumoContainer.innerHTML : '';
+            if (resumoContainer) {
+                resumoContainer.innerHTML = `
+                    <h2>Resumo Profissional</h2>
+                    <p style="opacity:1;transform:none;animation:none;text-align:justify;margin-bottom:8pt;font-size:10pt;">
+                        <strong>Analista de QA</strong> com mais de 3 anos de experiência e histórico como <strong>Desenvolvedor Full Stack</strong> — combinação que me permite enxergar o software de dentro para fora. Comecei no desenvolvimento com Vue.js, React, PHP (Laravel) e Node.js, e essa bagagem transformou minha atuação em qualidade: não apenas identifico falhas, entendo por que acontecem e como preveni-las desde o início do ciclo.
+                    </p>
+                    <p style="opacity:1;transform:none;animation:none;text-align:justify;font-size:10pt;">
+                        Especializado em <strong>automação de testes com Cypress</strong>, BDD, CI/CD e validação de APIs. Vivência sólida com <strong>metodologias ágeis</strong> (Scrum e Kanban), gestão via Jira, ClickUp e Linear, controle de versão com Git Flow e Docker em ambientes de desenvolvimento.
+                    </p>`;
+            }
+
+            // Força visibilidade de todas as seções
             document.querySelectorAll('section').forEach(s => {
                 s.style.opacity = '1';
                 s.style.transform = 'translateY(0)';
             });
 
-            // Força visibilidade dos cards de habilidades
+            // Força visibilidade dos cards de habilidades e cursos
             document.querySelectorAll('.categoria').forEach(card => {
                 card.classList.add('card-in');
                 card.style.animationDelay = '0s';
             });
-
-            // Garante que os parágrafos do resumo estejam visíveis
-            document.querySelectorAll('.resumo p').forEach(p => {
-                p.classList.add('slide-in');
-                p.style.opacity = '1';
-                p.style.transform = 'translateX(0)';
+            document.querySelectorAll('.curso-card').forEach(card => {
+                card.classList.add('card-pop');
+                card.style.animationDelay = '0s';
             });
 
             window.print();
 
-            // Restaura o estado após impressão
-            if (resumoH2) resumoH2.textContent = originalTitle;
+            // Restaura o estado original após impressão
+            if (resumoContainer) resumoContainer.innerHTML = originalResumoHTML;
             if (isDark) document.body.classList.add('dark');
         }
 
