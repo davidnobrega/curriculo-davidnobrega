@@ -467,6 +467,38 @@ h2::after {
     0 0 16px rgba(0, 200, 120, 0.5);
 }
 
+.habilidade-tag:hover i { color: #00c878; }
+
+/* Cores originais dos ícones nas skill tags */
+.habilidade-tag .fa-html5     { color: #e34f26; }
+.habilidade-tag .fa-react     { color: #61dafb; }
+.habilidade-tag .fa-layer-group { color: #00dc82; }
+.habilidade-tag .fa-vuejs     { color: #42b883; }
+.habilidade-tag .fa-js        { color: #d4a017; }
+.habilidade-tag .fa-css3-alt  { color: #38bdf8; }
+.habilidade-tag .fa-node-js   { color: #539e43; }
+.habilidade-tag .fa-database  { color: #4479a1; }
+.habilidade-tag .fa-php       { color: #777bb4; }
+.habilidade-tag .fa-plug      { color: #6b7280; }
+.habilidade-tag .fa-flask     { color: #00bf88; }
+.habilidade-tag .fa-robot     { color: #6366f1; }
+.habilidade-tag .fa-user-check { color: #3498db; }
+.habilidade-tag .fa-exchange-alt { color: #ff6c37; }
+.habilidade-tag .fa-bug       { color: #e74c3c; }
+.habilidade-tag .fa-infinity  { color: #0052cc; }
+.habilidade-tag .fa-comments  { color: #6366f1; }
+.habilidade-tag .fa-git-alt   { color: #f05033; }
+.habilidade-tag .fa-code-branch { color: #f05033; }
+.habilidade-tag .fa-jira      { color: #0052cc; }
+.habilidade-tag .fa-linux     { color: #e8b800; }
+.habilidade-tag .fa-figma     { color: #f24e1e; }
+.habilidade-tag .fa-sync-alt  { color: #10b981; }
+.habilidade-tag .fa-docker    { color: #2496ed; }
+.habilidade-tag .fa-th-large  { color: #0052cc; }
+.habilidade-tag .fa-stream    { color: #5e6ad2; }
+.habilidade-tag .fa-paper-plane { color: #ff6c37; }
+.habilidade-tag .fa-tasks     { color: #7b68ee; }
+
 /* Cursos */
 .cursos-grid {
   display: grid;
@@ -499,16 +531,19 @@ h2::after {
 }
 
 .curso-icon-wrap {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(0, 200, 120, 0.12), rgba(0, 229, 255, 0.08));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  color: var(--secondary);
+  font-size: 2.4rem;
 }
+
+/* Cores originais dos ícones de cada curso */
+.cursos-grid .curso-card:nth-child(1) .curso-icon-wrap i { color: #e34f26; } /* HTML5 */
+.cursos-grid .curso-card:nth-child(2) .curso-icon-wrap i { color: #d4a017; } /* JavaScript */
+.cursos-grid .curso-card:nth-child(3) .curso-icon-wrap i { color: #42b883; } /* Vue.js */
+.cursos-grid .curso-card:nth-child(4) .curso-icon-wrap i { color: #777bb4; } /* PHP */
+.cursos-grid .curso-card:nth-child(5) .curso-icon-wrap i { color: #00bf88; } /* Cypress */
+.cursos-grid .curso-card:nth-child(6) .curso-icon-wrap i { color: #6366f1; } /* AI/Prompt */
 
 .curso-nome {
   font-size: 0.9rem;
@@ -832,9 +867,6 @@ body.dark .curso-nome {
   color: #e8e8e8;
 }
 
-body.dark .curso-icon-wrap {
-  background: linear-gradient(135deg, rgba(0, 200, 120, 0.18), rgba(0, 229, 255, 0.12));
-}
 
 body.dark .periodo {
   color: #888;
