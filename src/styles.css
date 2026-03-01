@@ -910,6 +910,9 @@ body.dark #dark-toggle:hover {
   box-shadow: 0 6px 24px rgba(240, 192, 64, 0.5);
 }
 
+/* Esconde em tela os elementos exclusivos do PDF */
+.print-only { display: none; }
+
 /* ==================== IMPRESSÃO / PDF ==================== */
 @media print {
   @page {
@@ -928,13 +931,25 @@ body.dark #dark-toggle:hover {
   #contato,
   footer { display: none !important; }
 
-  /* === REMOVER ANIMAÇÕES === */
+  /* === MOSTRAR ELEMENTOS EXCLUSIVOS DO PDF === */
+  .print-only { display: flex !important; }
+
+  /* === REMOVER ANIMAÇÕES E DECORAÇÕES === */
   *, *::before, *::after {
     animation: none !important;
     transition: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
+
+  /* === REMOVER DIVISORES NEON E ORNAMENTOS === */
+  .experiencia::before,
+  .habilidades::before,
+  .cursos::before,
+  .formacao::before,
+  header::before,
+  header::after,
+  h2::after { display: none !important; }
 
   /* === BASE === */
   html, body {
@@ -952,28 +967,26 @@ body.dark #dark-toggle:hover {
 
   section {
     background: #ffffff !important;
-    padding: 14pt 0 !important;
+    padding: 12pt 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
-  /* === HEADER LIMPO === */
+  /* === HEADER === */
   header {
     background: #ffffff !important;
     background-image: none !important;
     color: #2c3e50 !important;
-    padding: 0 0 14pt !important;
+    padding: 0 0 12pt !important;
     text-align: center !important;
-    border-bottom: 1px solid #e0e0e0 !important;
+    border-bottom: 2px solid #2c3e50 !important;
     overflow: visible !important;
   }
-
-  header::before,
-  header::after { display: none !important; }
 
   h1 {
     color: #2c3e50 !important;
     font-size: 22pt !important;
-    margin-bottom: 8pt !important;
-    text-shadow: none !important;
+    margin-bottom: 6pt !important;
   }
 
   header .contact-info {
@@ -985,7 +998,7 @@ body.dark #dark-toggle:hover {
     background: none !important;
     border: none !important;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 6pt 0 0 !important;
   }
 
   header .contact-item {
@@ -1000,43 +1013,42 @@ body.dark #dark-toggle:hover {
     gap: 4pt !important;
   }
 
-  header .contact-item i { color: #3498db !important; }
+  header .contact-item i { color: #2c3e50 !important; font-size: 9pt !important; }
 
   /* === TÍTULOS DE SEÇÃO === */
   h2 {
     color: #2c3e50 !important;
-    font-size: 15pt !important;
+    font-size: 12pt !important;
     font-weight: 700 !important;
-    padding-bottom: 5pt !important;
-    border-bottom: 2px solid #3498db !important;
-    margin-bottom: 12pt !important;
-    text-shadow: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6pt !important;
+    padding-bottom: 4pt !important;
+    border-bottom: 1.5px solid #2c3e50 !important;
+    margin-bottom: 10pt !important;
     break-after: avoid;
   }
 
-  /* === SOBRE MIM / RESUMO === */
+  /* === RESUMO PROFISSIONAL === */
   .resumo p {
     opacity: 1 !important;
     transform: none !important;
-    animation: none !important;
     color: #2c3e50 !important;
     text-align: justify !important;
-    margin-bottom: 7pt !important;
+    margin-bottom: 6pt !important;
     font-size: 10pt !important;
+    line-height: 1.5 !important;
   }
 
   .resumo p strong { color: #2c3e50 !important; }
 
   /* === TIMELINE / EXPERIÊNCIA === */
   .timeline { position: static !important; }
-
   .timeline::before { display: none !important; }
-
   .timeline-icon { display: none !important; }
 
   .timeline-item {
     padding-left: 0 !important;
-    margin-bottom: 14pt !important;
+    margin-bottom: 12pt !important;
     position: static !important;
     break-inside: avoid;
   }
@@ -1051,22 +1063,21 @@ body.dark #dark-toggle:hover {
   .cargo {
     font-size: 11pt !important;
     font-weight: 700 !important;
-    font-style: italic !important;
     color: #2c3e50 !important;
-    margin-bottom: 3pt !important;
+    margin-bottom: 1pt !important;
   }
 
   .empresa {
     font-size: 10pt !important;
-    font-weight: 700 !important;
-    color: #3498db !important;
-    margin-bottom: 3pt !important;
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    margin-bottom: 2pt !important;
   }
 
   .periodo-local {
     font-size: 9pt !important;
-    color: #666 !important;
-    margin-bottom: 5pt !important;
+    color: #555 !important;
+    margin-bottom: 4pt !important;
   }
 
   .timeline-content ul {
@@ -1081,86 +1092,86 @@ body.dark #dark-toggle:hover {
   }
 
   /* === HABILIDADES === */
-  .habilidades-categorias {
-    display: block !important;
-  }
+  .habilidades .container { padding: 0 !important; }
+  .habilidades-categorias { display: block !important; }
 
   .categoria {
     background: none !important;
     border: none !important;
-    padding: 0 0 10pt !important;
+    padding: 0 0 7pt !important;
     border-radius: 0 !important;
     break-inside: avoid;
   }
 
   .categoria-titulo {
-    font-size: 11pt !important;
+    font-size: 10pt !important;
     font-weight: 700 !important;
     color: #2c3e50 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3pt !important;
     text-align: left !important;
     border-bottom: none !important;
-    padding-bottom: 4pt !important;
-    margin-bottom: 5pt !important;
+    padding-bottom: 1pt !important;
+    margin-bottom: 3pt !important;
     justify-content: flex-start !important;
   }
 
   .categoria-titulo i { display: none !important; }
-
-  .habilidades-lista {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 5pt !important;
-  }
+  .habilidades-lista { display: block !important; }
 
   .habilidade-tag {
-    background: #ffffff !important;
+    display: inline !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 10pt !important;
     color: #2c3e50 !important;
-    border: 1px solid #bdc3c7 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    padding: 2pt 8pt !important;
-    font-size: 9pt !important;
-    border-radius: 12pt !important;
   }
+
+  .habilidade-tag i { display: none !important; }
+  .habilidade-tag::after { content: " · "; color: #888; }
+  .habilidade-tag:last-child::after { content: ""; }
 
   /* === CURSOS === */
   .cursos-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 10pt !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4pt 24pt !important;
   }
 
   .curso-card {
     opacity: 1 !important;
     transform: none !important;
-    animation: none !important;
     background: none !important;
-    border: 1px solid #ddd !important;
-    padding: 10pt !important;
+    border: none !important;
+    padding: 3pt 0 !important;
     break-inside: avoid;
   }
 
   .curso-icon-wrap { display: none !important; }
 
   .curso-nome {
-    font-size: 9pt !important;
+    display: block !important;
+    font-size: 10pt !important;
     font-weight: 600 !important;
     color: #2c3e50 !important;
   }
 
   .curso-badge {
-    font-size: 8pt !important;
+    font-size: 8.5pt !important;
+    background: none !important;
+    padding: 0 !important;
   }
 
-  .curso-badge.concluido { color: #00a060 !important; }
-  .curso-badge.em-andamento { color: #a06800 !important; }
-  .pulse-dot { animation: none !important; }
+  .curso-badge.concluido { color: #2a7a50 !important; }
+  .curso-badge.em-andamento { color: #7a5000 !important; }
+  .pulse-dot { display: none !important; }
 
   /* === FORMAÇÃO === */
   .formacao-item {
     background: none !important;
     border: none !important;
-    padding: 0 !important;
+    padding: 0 0 8pt !important;
     break-inside: avoid;
   }
 
@@ -1172,18 +1183,17 @@ body.dark #dark-toggle:hover {
 
   .instituicao {
     font-size: 10pt !important;
-    font-style: italic !important;
-    color: #3498db !important;
+    color: #2c3e50 !important;
   }
 
   .periodo {
     font-size: 9pt !important;
-    color: #666 !important;
+    color: #555 !important;
   }
 
   /* === QUEBRAS DE PÁGINA === */
-  .experiencia, .habilidades, .formacao { break-before: auto; }
-  .timeline-item, .categoria, .formacao-item { break-inside: avoid; }
+  .experiencia, .habilidades, .cursos, .formacao { break-before: auto; }
+  .timeline-item, .categoria, .formacao-item, .curso-card { break-inside: avoid; }
 }
 
 /* Responsividade */
