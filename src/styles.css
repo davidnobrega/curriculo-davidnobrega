@@ -25,12 +25,16 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   background-color: var(--background);
   color: var(--dark);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Container Principal */
@@ -578,20 +582,20 @@ footer {
   animation: none;
 }
 
-/* Toggle Dark Mode */
+/* Toggle Dark Mode — fixo no canto superior direito */
 #dark-toggle {
   position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 50px;
-  height: 50px;
+  top: 16px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--primary);
   color: white;
   border: 2px solid var(--secondary);
   cursor: pointer;
   z-index: 9999;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -602,6 +606,33 @@ footer {
 #dark-toggle:hover {
   transform: scale(1.15) rotate(20deg);
   box-shadow: 0 6px 24px rgba(0, 200, 120, 0.55);
+}
+
+/* Botão flutuante WhatsApp */
+#whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: white;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.5);
+  animation: float-btn 3s ease-in-out infinite;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+}
+
+#whatsapp-float:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.7);
+  animation: none;
 }
 
 /* ===================== DARK MODE ===================== */
@@ -733,6 +764,7 @@ body.dark #dark-toggle:hover {
 
   /* === OCULTAR ELEMENTOS INTERATIVOS === */
   #dark-toggle,
+  #whatsapp-float,
   .cta-buttons,
   .btn-pdf,
   .profile-img,
