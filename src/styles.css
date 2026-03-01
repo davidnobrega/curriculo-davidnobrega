@@ -973,7 +973,8 @@ body.dark #dark-toggle:hover {
   .contact-info { flex-direction: column; align-items: center; }
   .cta-buttons { flex-direction: column; align-items: stretch; padding: 0 20px; }
   .btn { width: 100%; justify-content: center; }
-  .habilidades-categorias { grid-template-columns: repeat(2, 1fr); }
+  .habilidades-categorias { grid-template-columns: 1fr; }
+  .habilidades .container { padding: 0 20px; }
   .timeline::before { left: 20px; }
   .timeline-item { padding-left: 60px; }
   .timeline-icon { left: 8px; }
