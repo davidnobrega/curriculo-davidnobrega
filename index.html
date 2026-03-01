@@ -195,6 +195,52 @@
         </div>
     </section>
 
+    <!-- Cursos -->
+    <section id="cursos" class="cursos">
+        <div class="container">
+            <h2>Cursos</h2>
+            <div class="cursos-grid">
+
+                <div class="curso-card">
+                    <div class="curso-icon-wrap"><i class="fab fa-html5"></i></div>
+                    <div class="curso-nome">HTML e CSS</div>
+                    <span class="curso-badge concluido"><i class="fas fa-check-circle"></i> Concluído</span>
+                </div>
+
+                <div class="curso-card">
+                    <div class="curso-icon-wrap"><i class="fab fa-js"></i></div>
+                    <div class="curso-nome">Lógica de Programação com JavaScript</div>
+                    <span class="curso-badge concluido"><i class="fas fa-check-circle"></i> Concluído</span>
+                </div>
+
+                <div class="curso-card">
+                    <div class="curso-icon-wrap"><i class="fab fa-vuejs"></i></div>
+                    <div class="curso-nome">Vue 3</div>
+                    <span class="curso-badge concluido"><i class="fas fa-check-circle"></i> Concluído</span>
+                </div>
+
+                <div class="curso-card">
+                    <div class="curso-icon-wrap"><i class="fab fa-php"></i></div>
+                    <div class="curso-nome">Laravel</div>
+                    <span class="curso-badge concluido"><i class="fas fa-check-circle"></i> Concluído</span>
+                </div>
+
+                <div class="curso-card">
+                    <div class="curso-icon-wrap"><i class="fas fa-flask"></i></div>
+                    <div class="curso-nome">Quality Assurance e Cypress</div>
+                    <span class="curso-badge concluido"><i class="fas fa-check-circle"></i> Concluído</span>
+                </div>
+
+                <div class="curso-card">
+                    <div class="curso-icon-wrap"><i class="fas fa-robot"></i></div>
+                    <div class="curso-nome">Engenharia de Prompt</div>
+                    <span class="curso-badge em-andamento"><span class="pulse-dot"></span> Cursando</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Formação -->
     <section id="formacao" class="formacao">
         <div class="container">
@@ -306,6 +352,12 @@
                 s.style.transform = 'translateY(0)';
             });
 
+            // Força visibilidade dos cards de habilidades
+            document.querySelectorAll('.categoria').forEach(card => {
+                card.classList.add('card-in');
+                card.style.animationDelay = '0s';
+            });
+
             // Garante que os parágrafos do resumo estejam visíveis
             document.querySelectorAll('.resumo p').forEach(p => {
                 p.classList.add('slide-in');
@@ -336,6 +388,48 @@
             localStorage.setItem('darkMode', isDark);
             applyDark(isDark);
         });
+
+        // Animação dos cards de habilidades: slide da direita, re-dispara ao entrar na viewport
+        const habilidadesSection = document.querySelector('.habilidades');
+        if (habilidadesSection) {
+            const cardsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const cards = entry.target.querySelectorAll('.categoria');
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            card.classList.remove('card-in');
+                            void card.offsetWidth;
+                            card.style.animationDelay = `${i * 0.15}s`;
+                            card.classList.add('card-in');
+                        });
+                    } else {
+                        cards.forEach(card => card.classList.remove('card-in'));
+                    }
+                });
+            }, { threshold: 0.2 });
+            cardsObserver.observe(habilidadesSection);
+        }
+
+        // Animação dos cards de cursos: pop/escala, re-dispara ao entrar na viewport
+        const cursosSection = document.querySelector('.cursos');
+        if (cursosSection) {
+            const cursosObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const cards = entry.target.querySelectorAll('.curso-card');
+                    if (entry.isIntersecting) {
+                        cards.forEach((card, i) => {
+                            card.classList.remove('card-pop');
+                            void card.offsetWidth;
+                            card.style.animationDelay = `${i * 0.1}s`;
+                            card.classList.add('card-pop');
+                        });
+                    } else {
+                        cards.forEach(card => card.classList.remove('card-pop'));
+                    }
+                });
+            }, { threshold: 0.2 });
+            cursosObserver.observe(cursosSection);
+        }
 
         // Animação do Sobre Mim: re-dispara toda vez que entrar na viewport
         const resumoSection = document.querySelector('.resumo');
