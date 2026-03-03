@@ -279,6 +279,15 @@
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
+
+                <div class="linkedin-badge" style="margin-top: 28px; display: flex; justify-content: center;">
+                    <div class="badge-base LI-profile-badge badge-light" data-locale="pt_BR" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="david-nóbrega-38531b238" data-version="v1">
+                        <a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/david-n%C3%B3brega-38531b238?trk=profile-badge">David Nóbrega</a>
+                    </div>
+                    <div class="badge-base LI-profile-badge badge-dark" data-locale="pt_BR" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="david-nóbrega-38531b238" data-version="v1" style="display:none;">
+                        <a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/david-n%C3%B3brega-38531b238?trk=profile-badge">David Nóbrega</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -390,6 +399,8 @@
         function applyDark(isDark) {
             document.body.classList.toggle('dark', isDark);
             toggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            document.querySelector('.badge-light').style.display = isDark ? 'none' : 'block';
+            document.querySelector('.badge-dark').style.display  = isDark ? 'block' : 'none';
         }
 
         applyDark(localStorage.getItem('darkMode') === 'true');
@@ -463,5 +474,6 @@
             resumoObserver.observe(resumoSection);
         }
     </script>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </body>
 </html>
