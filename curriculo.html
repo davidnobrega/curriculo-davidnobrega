@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo — David Nóbrega</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11pt;
+      color: #111;
+      background: #fff;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 40px;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #111;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .header h1 {
+      font-size: 24pt;
+      font-weight: 700;
+      letter-spacing: 1.5pt;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .header .cargo {
+      font-size: 11.5pt;
+      font-weight: 400;
+      letter-spacing: 0.5pt;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .header .contatos {
+      font-size: 9.5pt;
+      color: #222;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 16px;
+    }
+
+    .header .contatos span::before {
+      content: "";
+    }
+
+    .sep {
+      color: #999;
+    }
+
+    a {
+      color: #1a56db;
+      text-decoration: underline;
+    }
+
+    /* SEÇÕES */
+    .secao {
+      margin-bottom: 18px;
+    }
+
+    .secao h2 {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2pt;
+      border-bottom: 1px solid #111;
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+    }
+
+    /* RESUMO */
+    .resumo p {
+      font-size: 10.5pt;
+      line-height: 1.65;
+      text-align: justify;
+      margin-bottom: 7px;
+    }
+
+    .resumo p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* EXPERIÊNCIA */
+    .job {
+      margin-bottom: 14px;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    .job-titulo {
+      font-size: 11pt;
+      font-weight: 700;
+    }
+
+    .job-periodo {
+      font-size: 9.5pt;
+      color: #444;
+      white-space: nowrap;
+    }
+
+    .job-empresa {
+      font-size: 10pt;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .job ul {
+      padding-left: 16px;
+      margin: 0;
+    }
+
+    .job ul li {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      margin-bottom: 3px;
+    }
+
+    .job ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FORMAÇÃO */
+    .formacao-item {
+      font-size: 10.5pt;
+    }
+
+    .formacao-item .curso {
+      font-weight: 700;
+    }
+
+    .formacao-item .instituicao {
+      color: #333;
+    }
+
+    /* HABILIDADES */
+    .habilidades-bloco {
+      margin-bottom: 6px;
+      font-size: 10.5pt;
+      line-height: 1.6;
+    }
+
+    .habilidades-bloco:last-child {
+      margin-bottom: 0;
+    }
+
+    .habilidades-bloco strong {
+      font-weight: 700;
+    }
+
+    /* IDIOMAS */
+    .idioma-item {
+      font-size: 10.5pt;
+      line-height: 1.6;
+    }
+
+    /* PRINT */
+    @page {
+      size: A4;
+      margin: 14mm 18mm;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .secao h2 { break-after: avoid; }
+      .job { break-inside: avoid; }
+      .formacao-item { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <div class="header">
+    <h1>David Nóbrega</h1>
+    <div class="cargo">Analista de QA Pleno</div>
+    <div class="contatos">
+      <span>Brasília, DF</span>
+      <span class="sep">|</span>
+      <span>(61) 99515-7424</span>
+      <span class="sep">|</span>
+      <a href="mailto:david_nobrega@outlook.com">david_nobrega@outlook.com</a>
+      <span class="sep">|</span>
+      <a href="https://www.linkedin.com/in/david-n%C3%B3brega-38531b238" target="_blank">linkedin.com/in/david-nobrega-38531b238</a>
+      <span class="sep">|</span>
+      <a href="https://github.com/davidnobrega" target="_blank">github.com/davidnobrega</a>
+      <span class="sep">|</span>
+      <span>Currículo online: <a href="https://davidnobrega.github.io/curriculo-davidnobrega/" target="_blank">davidnobrega.github.io/curriculo-davidnobrega</a></span>
+    </div>
+  </div>
+
+  <!-- RESUMO PROFISSIONAL -->
+  <div class="secao resumo">
+    <h2>Resumo Profissional</h2>
+    <p>
+      Analista de QA com mais de 3 anos de experiência, com histórico como desenvolvedor Full Stack — uma combinação que me permite enxergar o software de dentro para fora. Comecei minha carreira no desenvolvimento, atuando com Vue.js, React, PHP (Laravel) e Node.js, e essa bagagem técnica transformou minha atuação em qualidade: não apenas identifico falhas, mas entendo por que elas acontecem e como preveni-las desde o início do ciclo.
+    </p>
+    <p>
+      Especializado em automação de testes com Cypress e testes de usabilidade, atuo na identificação e prevenção de falhas em todas as etapas do desenvolvimento, garantindo entregas com qualidade e confiabilidade. A proximidade com o código me permite colaborar diretamente com times de desenvolvimento, contribuindo para arquiteturas mais testáveis e processos mais eficientes.
+    </p>
+    <p>
+      No dia a dia, tenho vivência sólida com metodologias ágeis (Scrum e Kanban), gestão de tarefas em ferramentas como Jira, ClickUp e Linear, controle de versão com Git e Git Flow, Docker em ambientes de desenvolvimento, validação de APIs com Postman e leitura de protótipos no Figma.
+    </p>
+  </div>
+
+  <!-- EXPERIÊNCIA PROFISSIONAL -->
+  <div class="secao">
+    <h2>Experiência Profissional</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-titulo">Analista de Quality Assurance</div>
+        <div class="job-periodo">Junho 2023 – Presente (2 anos e 8 meses)</div>
+      </div>
+      <div class="job-empresa">ecosys AUTO &nbsp;·&nbsp; Brasília, DF</div>
+      <ul>
+        <li>Automação de testes end-to-end com Cypress, garantindo cobertura e confiabilidade das aplicações.</li>
+        <li>Execução de testes de usabilidade, regressão e validação de APIs com Postman.</li>
+        <li>Colaboração direta com times de desenvolvimento na identificação e prevenção de falhas desde o início do ciclo de entrega.</li>
+        <li>Participação ativa em cerimônias Scrum: dailys, refinamentos, reviews e retrospectivas.</li>
+        <li>Uso de Jira e Linear para gestão e rastreamento de bugs e tarefas de qualidade.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-titulo">Desenvolvedor Full Stack Junior</div>
+        <div class="job-periodo">Junho 2022 – Junho 2023 (1 ano)</div>
+      </div>
+      <div class="job-empresa">ecosys AUTO &nbsp;·&nbsp; Brasília, DF</div>
+      <ul>
+        <li>Desenvolvimento backend em PHP (Laravel) com foco na criação de APIs para frontends Vue.js/Nuxt/Tailwind.</li>
+        <li>Experiência com MySQL, Linux, Jira, Figma, Cypress e Git (Git Flow).</li>
+        <li>Aplicação de Scrum: participação ativa em dailys, refinamentos, reviews e retrospectivas.</li>
+        <li>Integração com frontend usando Vue.js 3, Tailwind e Nuxt.</li>
+        <li>Contribuição em soluções de software escaláveis e manutenção de sistemas internos.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-titulo">Desenvolvedor Full Stack (Estágio)</div>
+        <div class="job-periodo">Setembro 2021 – Junho 2022 (10 meses)</div>
+      </div>
+      <div class="job-empresa">Ragnasoft – Soluções em Tecnologia &nbsp;·&nbsp; Brasília, DF</div>
+      <ul>
+        <li>Desenvolvimento de aplicações em JavaScript.</li>
+        <li>Experiência com frontend e colaboração em projetos internos.</li>
+        <li>Apoio em integrações e implementação de novas funcionalidades.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FORMAÇÃO ACADÊMICA -->
+  <div class="secao">
+    <h2>Formação Acadêmica</h2>
+    <div class="formacao-item">
+      <div class="curso">Análise e Desenvolvimento de Sistemas <span style="font-weight:400;color:#555;">(Cursando)</span></div>
+      <div class="instituicao">Estácio</div>
+    </div>
+  </div>
+
+  <!-- HABILIDADES TÉCNICAS -->
+  <div class="secao">
+    <h2>Habilidades Técnicas</h2>
+    <div class="habilidades-bloco">
+      <strong>Frontend:</strong> HTML &nbsp;|&nbsp; CSS (Tailwind) &nbsp;|&nbsp; JavaScript &nbsp;|&nbsp; Vue.js 3 &nbsp;|&nbsp; Nuxt &nbsp;|&nbsp; React
+    </div>
+    <div class="habilidades-bloco">
+      <strong>Backend:</strong> PHP (Laravel) &nbsp;|&nbsp; Node.js &nbsp;|&nbsp; APIs REST &nbsp;|&nbsp; MySQL
+    </div>
+    <div class="habilidades-bloco">
+      <strong>Quality Assurance:</strong> Cypress &nbsp;|&nbsp; BDD &nbsp;|&nbsp; CI/CD &nbsp;|&nbsp; Testes Automatizados &nbsp;|&nbsp; Testes de Usabilidade &nbsp;|&nbsp; Testes de API &nbsp;|&nbsp; Bug Report
+    </div>
+    <div class="habilidades-bloco">
+      <strong>Ferramentas:</strong> Git &nbsp;|&nbsp; Git Flow &nbsp;|&nbsp; Docker &nbsp;|&nbsp; Jira &nbsp;|&nbsp; Linear &nbsp;|&nbsp; ClickUp &nbsp;|&nbsp; Postman &nbsp;|&nbsp; Figma &nbsp;|&nbsp; Scrum &nbsp;|&nbsp; Kanban &nbsp;|&nbsp; Linux
+    </div>
+  </div>
+
+  <!-- IDIOMAS -->
+  <div class="secao">
+    <h2>Idiomas</h2>
+    <div class="idioma-item"><strong>Português:</strong> Nativo</div>
+    <div class="idioma-item"><strong>Inglês:</strong> Técnico / Leitura</div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    window.onload = function () {
+      html2pdf()
+        .set({
+          margin: [10, 15, 10, 15],
+          filename: 'curriculo-david-nobrega.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, logging: false },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        })
+        .from(document.body)
+        .save()
+        .then(function () {
+          window.close();
+        });
+    };
+  </script>
+</body>
+</html>
